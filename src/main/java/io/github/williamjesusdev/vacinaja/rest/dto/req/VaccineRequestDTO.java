@@ -3,16 +3,21 @@ package io.github.williamjesusdev.vacinaja.rest.dto.req;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.github.williamjesusdev.vacinaja.domain.entity.User;
 import io.github.williamjesusdev.vacinaja.domain.entity.Vaccine;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
 public class VaccineRequestDTO {
+    @ApiModelProperty(value = "Nome da vacina", example = "Sarampo")
     private String nome;
+
+    @ApiModelProperty(value = "E-mail do usuário", example = "usuario@email.com")
     private String email;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @ApiModelProperty(value = "Data de aplicação da vacina", example = "2021-03-19")
     private LocalDate dataAplicacao;
 
     public VaccineRequestDTO() {

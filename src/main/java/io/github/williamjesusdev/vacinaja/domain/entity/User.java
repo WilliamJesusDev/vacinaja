@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.github.williamjesusdev.vacinaja.domain.annotation.CpfCnpj;
 import io.github.williamjesusdev.vacinaja.rest.dto.res.UserResponseDTO;
 import io.github.williamjesusdev.vacinaja.rest.dto.res.VaccineResponseDTO;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -20,25 +21,30 @@ import java.util.stream.Collectors;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = "Código de identificação do usuário", example = "1")
     private Long id;
 
     @Size(max = 60)
     @NotBlank(message = "Nome do usuário é obrigatório")
+    @ApiModelProperty(value = "Nome do usuário", example = "Meu Nome")
     private String nome;
 
     @Email
     @Column(unique = true)
     @NotBlank(message = "E-mail é obrigatório")
+    @ApiModelProperty(value = "E-mail do usuário", example = "usuario@email.com")
     private String email;
 
     @CpfCnpj
     @Column(unique = true)
     @NotBlank(message = "CPF é obrigatório")
+    @ApiModelProperty(value = "CPF do usuário", example = "123.456.789-10")
     private String cpf;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "data_nascimento")
     @NotNull(message = "Data de nascimento é obrigatória")
+    @ApiModelProperty(value = "Data de nascimento do usuário", example = "2000-03-19")
     private LocalDate dataNascimento;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

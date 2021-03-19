@@ -57,9 +57,11 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("API Vacina Já")
-                .description("API de cadastro de aplicação de vacinas.")
+                .title("Vacina Já - API REST")
+                .description("API para cadastro e controle de vacinação.")
                 .version("1.0")
+                .license("Apache License Version 2.0")
+                .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
                 .contact(contact())
                 .build();
     }

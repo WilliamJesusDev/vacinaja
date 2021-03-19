@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/vacinas")
-@Api(value = "Vacinação API REST")
+@Api(tags = "API de Vacinação")
 public class VaccineController {
 
     @Autowired

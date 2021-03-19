@@ -1,6 +1,7 @@
 package io.github.williamjesusdev.vacinaja.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -16,24 +17,29 @@ import java.util.Objects;
 public class Vaccine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = "Código de controle da aplicação da vacina", example = "1")
     private Long id;
 
     @Size(max = 60)
     @NotBlank(message = "Nome da vacina é obrigatório")
+    @ApiModelProperty(value = "Nome da vacina", example = "Sarampo")
     private String nome;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     @NotNull(message = "E-mail do usuário é obrigatório")
+    @ApiModelProperty(value = "Usuário que recebeu a aplicação da vacina", example = "1")
     private User user;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "data_aplicacao")
     @NotNull(message = "Data da aplicação da vacina é obrigatória")
+    @ApiModelProperty(value = "Data de aplicação da vacina", example = "2021-03-19")
     private LocalDate dataAplicacao;
 
     @CreatedDate
     @Column(name = "data_criacao")
+    @ApiModelProperty(value = "Data de lançamento da vacina")
     private LocalDateTime dataCriacao;
 
     public Vaccine() {
